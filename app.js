@@ -81,7 +81,7 @@ app.post("/auth/register", async (req, res) => {
   const user = new User({
     name,
     email,
-    passwordHash,
+    password: passwordHash,
   });
 
   try {
@@ -91,6 +91,9 @@ app.post("/auth/register", async (req, res) => {
   } catch (error) {
     res.status(500).json({ msg: error });
   }
+
+  // Adiconar verificação de e-mail válido
+  // Senha ter o minimo de caracter
 });
 
 app.post("/auth/login", async (req, res) => {
